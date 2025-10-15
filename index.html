@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PANEL PTERODACTYL - Elaina Store</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://files.catbox.moe/doyw4z.jpg');
+            background-size: cover;
+            background-attachment: fixed;
+            color: #fff;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        header {
+            background: rgba(0, 0, 0, 0.8);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 50px;
+            margin-right: 15px;
+        }
+
+        .logo h1 {
+            font-size: 1.8rem;
+            color: #ff6b6b;
+            text-shadow: 0 0 10px rgba(255, 107, 107, 0.5);
+        }
+
+        .order-btn {
+            background: linear-gradient(45deg, #25D366, #128C7E);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 50px;
+            font-weight: bold;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+        }
+
+        .order-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.5);
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 80px 0;
+            background: rgba(0, 0, 0, 0.5);
+            margin-bottom: 40px;
+        }
+
+        .hero h2 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: #ff6b6b;
+            text-shadow: 0 0 15px rgba(255, 107, 107, 0.7);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto;
+            color: #ddd;
+        }
+
+        /* Section Styles */
+        section {
+            margin-bottom: 50px;
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        section h2 {
+            font-size: 2rem;
+            margin-bottom: 25px;
+            color: #ff6b6b;
+            border-bottom: 2px solid #ff6b6b;
+            padding-bottom: 10px;
+            display: inline-block;
+        }
+
+        /* Product Grid */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .product-card {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 20px;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .product-title {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: #ffd166;
+        }
+
+        .product-price {
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: #ff6b6b;
+            margin-bottom: 15px;
+        }
+
+        .product-description {
+            color: #ccc;
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+        }
+
+        .buy-btn {
+            background: linear-gradient(45deg, #ff6b6b, #ff8e8e);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            width: 100%;
+            transition: all 0.3s ease;
+        }
+
+        .buy-btn:hover {
+            background: linear-gradient(45deg, #ff5252, #ff7b7b);
+            transform: scale(1.05);
+        }
+
+        /* Payment Methods */
+        .payment-methods {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .payment-method {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 15px;
+            border-radius: 10px;
+            width: 150px;
+        }
+
+        .payment-method img {
+            width: 80px;
+            height: 80px;
+            object-fit: contain;
+            margin-bottom: 10px;
+            border-radius: 10px;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 30px 0;
+            background: rgba(0, 0, 0, 0.8);
+            margin-top: 50px;
+            color: #aaa;
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background: #222;
+            padding: 30px;
+            border-radius: 15px;
+            width: 90%;
+            max-width: 500px;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.5);
+        }
+
+        .modal h3 {
+            margin-bottom: 20px;
+            color: #ff6b6b;
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #ddd;
+        }
+
+        .form-group select, .form-group input {
+            width: 100%;
+            padding: 12px;
+            border-radius: 5px;
+            border: 1px solid #444;
+            background: #333;
+            color: white;
+        }
+
+        .modal-buttons {
+            display: flex;
+            gap: 10px;
+        }
+
+        .modal-buttons button {
+            flex: 1;
+            padding: 12px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .confirm-btn {
+            background: linear-gradient(45deg, #25D366, #128C7E);
+            color: white;
+        }
+
+        .cancel-btn {
+            background: #555;
+            color: white;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .hero h2 {
+                font-size: 2.2rem;
+            }
+            
+            .product-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <img src="https://files.catbox.moe/h0067w.png" alt="Logo">
+                    <h1>ELAINA STORE</h1>
+                </div>
+                <button class="order-btn" id="orderBtn">
+                    <i class="fab fa-whatsapp"></i> Pesan Sekarang
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h2>ELAINA STORE</h2>
+            <p>layanan Digital Terbaik</p>
+        </div>
+    </section>
+
+    <div class="container">
+        <!-- Panel Pterodactyl Section -->
+        <section id="panel">
+            <h2>PANEL PTERODACTYL</h2>
+            <div class="product-grid">
+                <!-- Products will be added here by JavaScript -->
+            </div>
+        </section>
+
+        <!-- NOKOS WhatsApp Section -->
+        <section id="nokos">
+            <h2>NOKOS WHATSAPP</h2>
+            <div class="product-grid">
+                <!-- Products will be added here by JavaScript -->
+            </div>
+        </section>
+
+        <!-- Jasa & Layanan Section -->
+        <section id="jasa">
+            <h2>JASA & LAYANAN</h2>
+            <div class="product-grid">
+                <!-- Products will be added here by JavaScript -->
+            </div>
+        </section>
+
+        <!-- Suntik Instagram Section -->
+        <section id="instagram">
+            <h2>SUNTIK INSTAGRAM</h2>
+            <div class="product-grid">
+                <!-- Products will be added here by JavaScript -->
+            </div>
+        </section>
+
+        <!-- Suntik TikTok Section -->
+        <section id="tiktok">
+            <h2>SUNTIK TIKTOK - ELAINA STR</h2>
+            <div class="product-grid">
+                <!-- Products will be added here by JavaScript -->
+            </div>
+        </section>
+
+        <!-- Payment Methods -->
+        <section id="payment">
+            <h2>METODE PEMBAYARAN</h2>
+            <div class="payment-methods">
+                <div class="payment-method">
+                    <img src="https://files.catbox.moe/p7tbdp.jpg" alt="Dana">
+                    <p>Dana</p>
+                </div>
+                <div class="payment-method">
+                    <img src="https://files.catbox.moe/ap6gyz.jpg" alt="Gopay">
+                    <p>Gopay</p>
+                </div>
+                <div class="payment-method">
+                    <img src="https://files.catbox.moe/6aanm2.png" alt="Shopeepay">
+                    <p>Shopeepay</p>
+                </div>
+                <div class="payment-method">
+                    <img src="https://files.catbox.moe/meqzvg.jpg" alt="Seabank">
+                    <p>Seabank</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; Elaina Store 2025</p>
+        </div>
+    </footer>
+
+    <!-- Order Modal -->
+    <div class="modal" id="orderModal">
+        <div class="modal-content">
+            <h3>Pesan Sekarang</h3>
+            <form id="orderForm">
+                <div class="form-group">
+                    <label for="product">Pilih Barang:</label>
+                    <select id="product" required>
+                        <option value="">-- Pilih Barang --</option>
+                        <!-- Options will be added by JavaScript -->
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="paymentMethod">Metode Pembayaran:</label>
+                    <select id="paymentMethod" required>
+                        <option value="">-- Pilih Metode --</option>
+                        <option value="Dana">Dana</option>
+                        <option value="Gopay">Gopay</option>
+                        <option value="Shopeepay">Shopeepay</option>
+                        <option value="Seabank">Seabank</option>
+                    </select>
+                </div>
+                <div class="modal-buttons">
+                    <button type="button" class="cancel-btn" id="cancelBtn">Batal</button>
+                    <button type="submit" class="confirm-btn">Pesan via WhatsApp</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Fungsi untuk mengubah format harga dari "K" menjadi format Rupiah lengkap
+        function formatPrice(priceStr) {
+            // Jika sudah dalam format Rp, kembalikan langsung
+            if (priceStr.includes('Rp')) return priceStr;
+            
+            // Jika mengandung "K", konversi ke format Rupiah
+            if (priceStr.includes('K')) {
+                const numericValue = parseInt(priceStr.replace('K', '').trim());
+                return `Rp${(numericValue * 1000).toLocaleString('id-ID')}`;
+            }
+            
+            // Jika hanya angka, tambahkan format Rupiah
+            if (!isNaN(priceStr)) {
+                return `Rp${parseInt(priceStr).toLocaleString('id-ID')}`;
+            }
+            
+            return priceStr;
+        }
+
+        // Product Data dengan harga yang sudah diformat
+        const products = {
+            panel: [
+                { name: "RAM 1GB CPU 30%", price: "Rp1.000" },
+                { name: "RAM 2GB CPU 60%", price: "Rp2.000" },
+                { name: "RAM 3GB CPU 90%", price: "Rp3.000" },
+                { name: "RAM 4GB CPU 120%", price: "Rp4.000" },
+                { name: "RAM 5GB CPU 150%", price: "Rp5.000" },
+                { name: "RAM 6GB CPU 180%", price: "Rp6.000" },
+                { name: "RAM 7GB CPU 200%", price: "Rp7.000" },
+                { name: "RAM 8GB CPU 225%", price: "Rp8.000" },
+                { name: "RAM 9GB CPU 250%", price: "Rp9.000" },
+                { name: "RAM UNLIMITED CPU UNLIMITED", price: "Rp5.000", description: "(Promo)" }
+            ],
+            nokos: [
+                { name: "NOKOS AFGANISTAN", price: formatPrice("20K") },
+                { name: "NOKOS ALBANIA", price: formatPrice("15K") },
+                { name: "NOKOS ALGERIA", price: formatPrice("15K") },
+                { name: "NOKOS ANGOLA", price: formatPrice("15K") },
+                { name: "NOKOS ARGENTINA", price: formatPrice("15K") },
+                { name: "NOKOS ARMENIA", price: formatPrice("14K") },
+                { name: "NOKOS BANGLADESH", price: formatPrice("20K") },
+                { name: "NOKOS BELARUS", price: formatPrice("32K") },
+                { name: "NOKOS BHUTAN", price: formatPrice("14K") },
+                { name: "NOKOS BOLOVIA", price: formatPrice("14K") },
+                { name: "NOKOS BRAZIL", price: formatPrice("25K") },
+                { name: "NOKOS BRUNEI", price: formatPrice("15K") },
+                { name: "NOKOS CAMBODIA", price: formatPrice("15K") },
+                { name: "NOKOS CAMEROON", price: formatPrice("12K") },
+                { name: "NOKOS CANADA", price: formatPrice("14K") },
+                { name: "NOKOS CAPEVERDE", price: formatPrice("15K") },
+                { name: "NOKOS CHILI", price: formatPrice("14K") },
+                { name: "NOKOS CHINA", price: formatPrice("22K") },
+                { name: "NOKOS ENGLAND", price: formatPrice("22K") },
+                { name: "NOKOS FIJI", price: formatPrice("8K") },
+                { name: "NOKOS GEORGIA", price: formatPrice("20K") },
+                { name: "NOKOS GHANA", price: formatPrice("17K") },
+                { name: "NOKOS HONGKONG", price: formatPrice("10K") },
+                { name: "NOKOS INDIA", price: formatPrice("20K") },
+                { name: "NOKOS INDONESIA", price: formatPrice("6K") },
+                { name: "NOKOS IRAN", price: formatPrice("18K") },
+                { name: "NOKOS JAMAIKA", price: formatPrice("30K") },
+                { name: "NOKOS JORDAN", price: formatPrice("15K") },
+                { name: "NOKOS KENYA", price: formatPrice("6K") },
+                { name: "NOKOS KUWAIT", price: formatPrice("16K") },
+                { name: "NOKOS LAOS", price: formatPrice("10K") },
+                { name: "NOKOS LEBANON", price: formatPrice("15K") },
+                { name: "NOKOS MADAGASKAR", price: formatPrice("15K") },
+                { name: "NOKOS MALAYSIA", price: formatPrice("15K") },
+                { name: "NOKOS MALADEWA", price: formatPrice("15K") },
+                { name: "NOKOS MEXICO", price: formatPrice("35K") },
+                { name: "NOKOS MONGOLIA", price: formatPrice("16K") },
+                { name: "NOKOS MONTENEGRO", price: formatPrice("15K") },
+                { name: "NOKOS MAROKO", price: formatPrice("12K") },
+                { name: "NOKOS MYANMAR", price: formatPrice("14K") },
+                { name: "NOKOS NEPAL", price: formatPrice("15K") },
+                { name: "NOKOS NORWEGIA", price: formatPrice("20K") },
+                { name: "NOKOS PAKISTAN", price: formatPrice("10K") },
+                { name: "NOKOS PALESTINA", price: formatPrice("16K") },
+                { name: "NOKOS PANAMA", price: formatPrice("16K") },
+                { name: "NOKOS PARAGUAY", price: formatPrice("15K") },
+                { name: "NOKOS PERU", price: formatPrice("20K") },
+                { name: "NOKOS PHILIFINA", price: formatPrice("6K") },
+                { name: "NOKOS PORTUGAL", price: formatPrice("25K") },
+                { name: "NOKOS QATAR", price: formatPrice("15K") },
+                { name: "NOKOS RUMANIA", price: formatPrice("15K") },
+                { name: "NOKOS RUSIA", price: formatPrice("40K") },
+                { name: "NOKOS SENEGAL", price: formatPrice("15K") },
+                { name: "NOKOS SERBIA", price: formatPrice("25K") },
+                { name: "NOKOS SLOVENIA", price: formatPrice("22K") },
+                { name: "NOKOS SOMALIA", price: formatPrice("10K") },
+                { name: "NOKOS SOUTH AFRIKA", price: formatPrice("5K") },
+                { name: "NOKOS TAJIKISTAN", price: formatPrice("15K") },
+                { name: "NOKOS THAILAND", price: formatPrice("12K") },
+                { name: "NOKOS TIMOR-LESTE", price: formatPrice("22K") },
+                { name: "NOKOS TUNISIA", price: formatPrice("15K") },
+                { name: "NOKOS TURKMENISTAN", price: formatPrice("18K") },
+                { name: "NOKOS UKRANIA", price: formatPrice("15K") },
+                { name: "NOKOS USA", price: formatPrice("20K") },
+                { name: "NOKOS UZBEKISTAN", price: formatPrice("18K") },
+                { name: "NOKOS VENEZUELA", price: formatPrice("15K") },
+                { name: "NOKOS VIETNAM", price: formatPrice("7K") },
+                { name: "NOKOS YAMAN", price: formatPrice("17K") },
+                { name: "NOKOS ZAMBIA", price: formatPrice("15K") }
+            ],
+            jasa: [
+                { name: "JASA DESIGN LOGO", price: formatPrice("5K") },
+                { name: "JASA DESIGN POSTER", price: formatPrice("15K") },
+                { name: "JASA DESIGN MASCOT", price: formatPrice("20K") },
+                { name: "JASA RENNAME SCRIPT WA", price: formatPrice("5K") },
+                { name: "JASA BUG NOMER", price: formatPrice("5K") },
+                { name: "JASA BUAT WEBSITE PAYMENT", price: formatPrice("5K") },
+                { name: "JASA BUAT WEBSITE STORE", price: formatPrice("20K") },
+                { name: "JASA BUAT WEBSITE BIODATA", price: formatPrice("5K") }
+            ],
+            instagram: [
+                { name: "100 Followers", price: "Rp 5.000" },
+                { name: "200 Followers", price: "Rp 10.000" },
+                { name: "300 Followers", price: "Rp 15.000" },
+                { name: "400 Followers", price: "Rp 18.000" },
+                { name: "500 Followers", price: "Rp 20.000" },
+                { name: "1.000 Followers", price: "Rp 40.000", description: "🚀 (Best Seller)" },
+                { name: "100 Likes", price: "Rp 1.000" },
+                { name: "200 Likes", price: "Rp 2.000" },
+                { name: "300 Likes", price: "Rp 3.000" },
+                { name: "400 Likes", price: "Rp 4.000" },
+                { name: "500 Likes", price: "Rp 5.000" },
+                { name: "1.000 Likes", price: "Rp 7.000", description: "🚀 (Best Seller)" },
+                { name: "5.000 Views", price: "Rp 2.000" },
+                { name: "10.000 Views", price: "Rp 4.000" },
+                { name: "20.000 Views", price: "Rp 8.000" },
+                { name: "30.000 Views", price: "Rp 10.000" },
+                { name: "40.000 Views", price: "Rp 13.000" },
+                { name: "50.000 Views", price: "Rp 15.000", description: "🚀 (Best Seller)" }
+            ],
+            tiktok: [
+                { name: "100 Followers", price: "Rp 3.000" },
+                { name: "200 Followers", price: "Rp 5.000" },
+                { name: "300 Followers", price: "Rp 8.000" },
+                { name: "400 Followers", price: "Rp 10.000" },
+                { name: "500 Followers", price: "Rp 13.000" },
+                { name: "1.000 Followers", price: "Rp 20.000", description: "🚀 (Best Seller)" },
+                { name: "3.000 Likes", price: "Rp 2.000" },
+                { name: "6.000 Likes", price: "Rp 4.000" },
+                { name: "10.000 Likes", price: "Rp 8.000" },
+                { name: "15.000 Likes", price: "Rp 12.000" },
+                { name: "20.000 Likes", price: "Rp 15.000" },
+                { name: "50.000 Likes", price: "Rp 20.000", description: "🚀 (Best Seller)" },
+                { name: "5.000 Views", price: "Rp 2.000" },
+                { name: "10.000 Views", price: "Rp 4.000" },
+                { name: "20.000 Views", price: "Rp 8.000" },
+                { name: "30.000 Views", price: "Rp 10.000" },
+                { name: "40.000 Views", price: "Rp 13.000" },
+                { name: "50.000 Views", price: "Rp 15.000", description: "🚀 (Best Seller)" }
+            ]
+        };
+
+        // DOM Elements
+        const orderBtn = document.getElementById('orderBtn');
+        const orderModal = document.getElementById('orderModal');
+        const cancelBtn = document.getElementById('cancelBtn');
+        const orderForm = document.getElementById('orderForm');
+        const productSelect = document.getElementById('product');
+
+        // Render Products
+        function renderProducts() {
+            for (const category in products) {
+                const container = document.getElementById(category);
+                if (!container) continue;
+                
+                const productGrid = container.querySelector('.product-grid');
+                if (!productGrid) continue;
+                
+                products[category].forEach(product => {
+                    const productCard = document.createElement('div');
+                    productCard.className = 'product-card';
+                    
+                    productCard.innerHTML = `
+                        <div class="product-title">${product.name}</div>
+                        <div class="product-price">${product.price}</div>
+                        ${product.description ? `<div class="product-description">${product.description}</div>` : ''}
+                        <button class="buy-btn" data-product="${product.name}" data-price="${product.price}">Beli Sekarang</button>
+                    `;
+                    
+                    productGrid.appendChild(productCard);
+                });
+            }
+        }
+
+        // Populate Product Select
+        function populateProductSelect() {
+            for (const category in products) {
+                products[category].forEach(product => {
+                    const option = document.createElement('option');
+                    option.value = `${product.name} - ${product.price}`;
+                    option.textContent = `${product.name} - ${product.price}`;
+                    productSelect.appendChild(option);
+                });
+            }
+        }
+
+        // Event Listeners
+        orderBtn.addEventListener('click', () => {
+            orderModal.style.display = 'flex';
+        });
+
+        cancelBtn.addEventListener('click', () => {
+            orderModal.style.display = 'none';
+        });
+
+        orderForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            const product = document.getElementById('product').value;
+            const paymentMethod = document.getElementById('paymentMethod').value;
+            
+            if (!product || !paymentMethod) {
+                alert('Harap pilih produk dan metode pembayaran!');
+                return;
+            }
+            
+            // Format pesan WhatsApp
+            const message = `*PESAN*\nBARANG = ${product}\nHARGA = ${product.split(' - ')[1]}\nMETODE PEMBAYARAN = ${paymentMethod}`;
+            
+            // Encode pesan untuk URL
+            const encodedMessage = encodeURIComponent(message);
+            
+            // Nomor WhatsApp
+            const phoneNumber = "6283876048457";
+            
+            // Redirect ke WhatsApp
+            window.open(`https://wa.me/${phoneNumber}?text=${encodedMessage}`, '_blank');
+            
+            // Tutup modal
+            orderModal.style.display = 'none';
+            
+            // Reset form
+            orderForm.reset();
+        });
+
+        // Add event listeners to all buy buttons
+        document.addEventListener('click', (e) => {
+            if (e.target.classList.contains('buy-btn')) {
+                const product = e.target.getAttribute('data-product');
+                const price = e.target.getAttribute('data-price');
+                
+                // Set values in form
+                document.getElementById('product').value = `${product} - ${price}`;
+                
+                // Show modal
+                orderModal.style.display = 'flex';
+            }
+        });
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            renderProducts();
+            populateProductSelect();
+        });
+    </script>
+</body>
+</html>
