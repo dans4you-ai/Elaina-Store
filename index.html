@@ -336,38 +336,56 @@
             transform: scale(1.05);
         }
 
-        /* Payment Methods */
-        .payment-methods {
-            display: flex;
-            flex-wrap: wrap;
+        /* Payment Methods - Horizontal Layout */
+        .payment-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
             gap: 20px;
-            justify-content: center;
-            margin-top: 20px;
         }
 
-        .payment-method {
-            text-align: center;
+        .payment-card {
             background: rgba(30, 30, 60, 0.5);
-            padding: 15px;
             border-radius: 10px;
-            width: 150px;
-            border: 1px solid var(--card-border);
+            padding: 20px;
             transition: all 0.3s ease;
+            border: 1px solid var(--card-border);
+            position: relative;
+            overflow: hidden;
             font-weight: bold;
+            text-align: center;
         }
 
-        .payment-method:hover {
+        .payment-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(138, 43, 226, 0.1) 0%, rgba(0, 191, 255, 0.05) 100%);
+            z-index: -1;
+        }
+
+        .payment-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 5px 15px rgba(138, 43, 226, 0.3);
+            box-shadow: 0 10px 25px rgba(138, 43, 226, 0.3);
             border-color: var(--primary);
         }
 
-        .payment-method img {
-            width: 80px;
-            height: 80px;
-            object-fit: contain;
+        .payment-title {
+            font-size: 1.2rem;
             margin-bottom: 10px;
+            color: var(--light);
+            font-weight: bold;
+        }
+
+        .payment-image {
+            width: 100px;
+            height: 100px;
+            object-fit: contain;
+            margin: 0 auto 15px;
             border-radius: 10px;
+            display: block;
         }
 
         /* Footer */
@@ -502,14 +520,8 @@
                 grid-template-columns: 1fr;
             }
             
-            .payment-methods {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            .payment-method {
-                width: 100%;
-                max-width: 200px;
+            .payment-grid {
+                grid-template-columns: 1fr;
             }
         }
 
@@ -549,7 +561,7 @@
             <div class="header-content">
                 <div class="logo">
                     <img src="https://files.catbox.moe/h0067w.png" alt="Logo">
-                    <h1>PANEL PTERODACTYL</h1>
+                    <h1>𝐄𝐋𝐀𝐈𝐍𝐀 𝐒𝐓𝐎𝐑𝐄</h1>
                 </div>
                 <button class="order-btn" id="orderBtn">
                     <i class="fab fa-whatsapp"></i> Pesan Sekarang
@@ -562,7 +574,7 @@
     <section class="hero">
         <div class="container">
             <h2 class="floating">ELAINA STORE</h2>
-            <p>Menyediakan berbagai layanan digital terbaik dengan harga terjangkau</p>
+            <p>Layanan Digital Terbaik & Termurah</p>
         </div>
     </section>
 
@@ -570,7 +582,7 @@
         <!-- Panel Pterodactyl Section -->
         <section id="panel-section">
             <div class="section-header">
-                <h2>PANEL PTERODACTYL</h2>
+                <h2>Panel Pterodactyl</h2>
                 <i class="fas fa-chevron-down toggle-icon"></i>
             </div>
             <div class="section-content" id="panel-content">
@@ -583,7 +595,7 @@
         <!-- NOKOS WhatsApp Section -->
         <section id="nokos-section">
             <div class="section-header">
-                <h2>NOKOS WHATSAPP</h2>
+                <h2>Nokos WhatsApp</h2>
                 <i class="fas fa-chevron-down toggle-icon"></i>
             </div>
             <div class="section-content" id="nokos-content">
@@ -596,7 +608,7 @@
         <!-- Jasa & Layanan Section -->
         <section id="jasa-section">
             <div class="section-header">
-                <h2>JASA & LAYANAN</h2>
+                <h2>Jasa & Layanan</h2>
                 <i class="fas fa-chevron-down toggle-icon"></i>
             </div>
             <div class="section-content" id="jasa-content">
@@ -609,7 +621,7 @@
         <!-- Suntik Instagram Section -->
         <section id="instagram-section">
             <div class="section-header">
-                <h2>SUNTIK INSTAGRAM</h2>
+                <h2>Suntik Instagram</h2>
                 <i class="fas fa-chevron-down toggle-icon"></i>
             </div>
             <div class="section-content" id="instagram-content">
@@ -622,7 +634,7 @@
         <!-- Suntik TikTok Section -->
         <section id="tiktok-section">
             <div class="section-header">
-                <h2>SUNTIK TIKTOK - ELAINA STR</h2>
+                <h2>Suntik Tiktok</h2>
                 <i class="fas fa-chevron-down toggle-icon"></i>
             </div>
             <div class="section-content" id="tiktok-content">
@@ -634,23 +646,28 @@
 
         <!-- Payment Methods -->
         <section id="payment">
-            <h2>METODE PEMBAYARAN</h2>
-            <div class="payment-methods">
-                <div class="payment-method floating" style="animation-delay: 0s;">
-                    <img src="https://files.catbox.moe/p7tbdp.jpg" alt="Dana">
-                    <p>Dana</p>
-                </div>
-                <div class="payment-method floating" style="animation-delay: 0.5s;">
-                    <img src="https://files.catbox.moe/ap6gyz.jpg" alt="Gopay">
-                    <p>Gopay</p>
-                </div>
-                <div class="payment-method floating" style="animation-delay: 1s;">
-                    <img src="https://files.catbox.moe/6aanm2.png" alt="Shopeepay">
-                    <p>Shopeepay</p>
-                </div>
-                <div class="payment-method floating" style="animation-delay: 1.5s;">
-                    <img src="https://files.catbox.moe/meqzvg.jpg" alt="Seabank">
-                    <p>Seabank</p>
+            <div class="section-header">
+                <h2>METODE PEMBAYARAN</h2>
+                <i class="fas fa-chevron-down toggle-icon"></i>
+            </div>
+            <div class="section-content" id="payment-content">
+                <div class="payment-grid">
+                    <div class="payment-card floating" style="animation-delay: 0s;">
+                        <img src="https://files.catbox.moe/p7tbdp.jpg" alt="Dana" class="payment-image">
+                        <div class="payment-title">Dana</div>
+                    </div>
+                    <div class="payment-card floating" style="animation-delay: 0.2s;">
+                        <img src="https://files.catbox.moe/ap6gyz.jpg" alt="Gopay" class="payment-image">
+                        <div class="payment-title">Gopay</div>
+                    </div>
+                    <div class="payment-card floating" style="animation-delay: 0.4s;">
+                        <img src="https://files.catbox.moe/6aanm2.png" alt="Shopeepay" class="payment-image">
+                        <div class="payment-title">Shopeepay</div>
+                    </div>
+                    <div class="payment-card floating" style="animation-delay: 0.6s;">
+                        <img src="https://files.catbox.moe/meqzvg.jpg" alt="Seabank" class="payment-image">
+                        <div class="payment-title">Seabank</div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -896,7 +913,7 @@
 
         // Toggle section content
         function setupSectionToggles() {
-            const sections = document.querySelectorAll('section[id$="-section"]');
+            const sections = document.querySelectorAll('section[id$="-section"], #payment');
             
             sections.forEach(section => {
                 const header = section.querySelector('.section-header');
